@@ -15,6 +15,19 @@
 <div class="navbar navbar-expand navbar-light bg-light">
   <div class="container justify-content-start">
     <%= link_to 'CarService', root_path, class: 'navbar-brand' %>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav nav-tabs">
+          <li class="nav-item"><%= button_to 'Исполнители', executors_path, method: :get,
+                                             class: 'btn btn-light' %></li>
+          <li class="nav-item"><%= button_to 'Категории услуг', service_categories_path, method: :get,
+                                             data: { turbo: false }, class: 'btn btn-light' %></li>
+          <li class="nav-item"><%= link_to 'Исполнители', executors_path,
+                                           class: 'nav-link link-dark' %></li>
+          <li class="nav-item"><%= link_to 'Категории услуг', service_categories_path,
+                                           class: 'nav-link link-dark' %></li>
+      </ul>
+    </div>
   </div>
 </div>
 
