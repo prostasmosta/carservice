@@ -1,0 +1,10 @@
+<div class="col">
+  <div class="card border-success border-2 mb-3 mt-5" style="max-width: 18rem;">
+    <div class="card-header"><%= link_to order.number, order_path(order),
+                                         class: 'nav-link link-success text-center text-uppercase' %></div>
+    <div class="card-body">
+      <p class="card-text"><%= l order.created_at, format: :short %></p>
+      <p class="card-text"><%= order.executor %></p>
+    </div>
+  </div>
+</div>

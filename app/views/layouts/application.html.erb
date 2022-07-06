@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CarService</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+<body class="mb-5">
+<div class="navbar navbar-expand navbar-light bg-light">
+  <div class="container justify-content-start">
+    <%= link_to 'CarService', root_path, class: 'navbar-brand' %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<footer class="fixed-bottom bg-light text-center text-lg-start">
+  <div class="text-center p-3">
+    &copy; 2022
+    <a class="text-dark" href="https://github.com/prostasmosta/BBQ"><%= t 'app.name' %></a>
+  </div>
+</footer>
+</body>
+</html>
