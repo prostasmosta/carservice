@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.order(created_at: :desc).last(10)
-    @executors = Executor.order(created_at: :desc).last(10)
+    @orders = Order.order(created_at: :desc)
+    @executors = Executor.order(created_at: :desc)
   end
 
   def destroy
