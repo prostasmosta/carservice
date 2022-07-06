@@ -6,10 +6,10 @@ class ExecutorsController < ApplicationController
   end
 
   def create
-    @executor = Executor.new
+    @executor = Executor.new(executor_params)
 
     if @executor.save
-      redirect_to executor_path, notice: 'Новый заказ создан!'
+      redirect_to @executor, notice: 'Новый заказ создан!'
     else
       flash.now[:alert] = 'При попытке создать заказ возникли ошибки'
 
@@ -19,7 +19,7 @@ class ExecutorsController < ApplicationController
 
   def update
     if @executor.save
-      redirect_to executor_path, notice: 'Заказ обновлен!'
+      redirect_to @executor, notice: 'Заказ обновлен!'
     else
       flash.now[:alert] = 'При попытке обновить заказ возникли ошибки'
 
@@ -46,5 +46,9 @@ class ExecutorsController < ApplicationController
 
   def set_executor
     @executor = Executor.find(params[:id])
+  end
+
+  def executor_params
+    params.require(:executor).permit(:name)
   end
 end

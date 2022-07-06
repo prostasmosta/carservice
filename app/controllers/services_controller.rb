@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new
+    @service = Service.new(service_params)
 
     if @service.save
       redirect_to service_path, notice: 'Новый заказ создан!'
@@ -46,5 +46,9 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find(params[:id])
+  end
+
+  def service_params
+    params.require(:service).permit(:title)
   end
 end
