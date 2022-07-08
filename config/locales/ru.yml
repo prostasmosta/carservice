@@ -17,6 +17,8 @@ ru:
         title: 'Название'
       service_category:
         title: 'Название'
+      executor:
+        name: 'Имя'
 
   controllers:
     events:
@@ -38,22 +40,14 @@ ru:
     many: 'В вашей форме %{count} ошибок'
 
   events:
-    confirm_event: 'Вы точно хотите удалить событие?'
-    no_photos: 'Пока никто не выложил фотографии :('
-    no_subscribers: 'На событие еще никто не подписался'
+    delete_confirm: 'Уверены что хотите удалить?'
     back: 'вернуться'
     save: 'Сохранить'
     confirm: 'Подтвердить'
     edit_cat: 'Редактирование категории'
+    edit_executor: 'Редактирование исполнителя'
+    edit_service: 'Редактирование услуги'
     all_events: 'Все события'
     new_event: 'Новое событие'
     edit: 'Изменить'
-    delete_event: 'Удалить событие'
-    gallery: 'Галерея'
-    calling: 'Зовет:'
-    going: 'Пойдут:'
-    i_go: 'Я пойду:'
-    pincode_access: 'Доступ к данному событию только по пин-коду'
-    to_index: 'на главную'
-    pincode: 'Пин-код доступа'
     or: 'или'
