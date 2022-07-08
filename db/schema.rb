@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_071633) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_06_112911) do
   create_table "executors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -33,6 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_071633) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "service_category_id"
+    t.index ["service_category_id"], name: "index_services_on_service_category_id"
   end
 
+  add_foreign_key "services", "service_categories"
 end
