@@ -1,0 +1,9 @@
+<h1 class="my-3">Услуги</h1>
+
+<div>
+  <%= link_to 'Добавить услугу', new_service_category_service_path, class: 'btn btn-success' %>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+  <%= render partial: 'service', collection: @services %>
+</div>

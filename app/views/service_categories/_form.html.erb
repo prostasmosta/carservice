@@ -1,0 +1,14 @@
+<%= form_for service_category, data: { turbo: false } do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {errors: service_category.errors} %>
+
+  <div class="mb-3 mt-2">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mt-4">
+    <%= f.submit 'Сохранить', class: 'btn btn-success' %>
+    <%= t('events.or') %>
+    <%= link_to 'вернуться', :back %>
+  </div>
+<% end %>

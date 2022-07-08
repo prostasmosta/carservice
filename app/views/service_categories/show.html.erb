@@ -1,0 +1,26 @@
+<%#= render 'service_category', service_category: @service_category %>
+
+<div class="container my-3">
+  <h1><%= @service_category.title %></h1>
+
+  <div class="mt-4">
+    <%= link_to 'Редактировать', edit_service_category_path(@service_category),
+                class: 'btn btn-success' %>
+    <%= t('events.or') %>
+    <%= link_to t('events.back'), :back %>
+  </div>
+
+  <div class="mt-4">
+    <%= button_to 'Удалить', service_category_path(@service_category),
+                  method: :delete,
+                  form: { data: { turbo_confirm: 'Уверены что хотите удалить?' } },
+                  class: 'btn btn-danger' %>
+  </div>
+
+  <h2 class="mt-5"><%= link_to 'Услуги', new_service_category_service_path(@service_category, service),
+                               class: 'nav-link link-success' %></h2>
+
+  <% @services.each do |service| %>
+    <%= render 'services/service', service: service %>
+  <% end %>
+</div>
