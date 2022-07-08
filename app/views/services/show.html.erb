@@ -1,1 +1,7 @@
 <%= render 'service', service: @service %>
+<div class="mt-4">
+  <%= link_to 'Редактировать', edit_service_category_service_path(@service),
+              class: 'btn btn-success' %>
+  <%= t('events.or') %>
+  <%= link_to 'вернуться', :back %>
+</div>

@@ -1,4 +1,4 @@
-<%= form_for service, data: { turbo: false } do |f| %>
+<%= form_for [@service_category, service], data: { turbo: false } do |f| %>
   <%= render partial: 'partials/form_errors', locals: {errors: service.errors} %>
 
   <div class="mb-3 mt-2">
@@ -6,10 +6,10 @@
     <%= f.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="mb-3 mt-2">
-    <%= f.label :price %>
-    <%= f.text_field :price, class: 'form-control' %>
-  </div>
+<!--  <div class="mb-3 mt-2">-->
+    <%#= f.label :price %>
+    <%#= f.text_field :price, class: 'form-control' %>
+<!--  </div>-->
 
   <div class="mt-4">
     <%= f.submit 'Сохранить', class: 'btn btn-success' %>
