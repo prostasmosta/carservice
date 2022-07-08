@@ -1,3 +1,6 @@
 class Service < ApplicationRecord
-  has_many :executors, presence: true
+  belongs_to :service_category
+  has_many :executors
+
+  validates :title, presence:true, uniqueness: true
 end

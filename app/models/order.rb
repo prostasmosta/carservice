@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  has_many :service_categories
   has_many :services, through: :service_categories
   has_many :executors, through: :services
 
