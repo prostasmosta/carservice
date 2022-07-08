@@ -4,5 +4,5 @@
   <%= link_to 'Добавить категорию', new_service_category_path, class: 'btn btn-success' %>
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-  <%= render partial:'service_category', collection: @service_categories %>
+  <%= render partial: 'service_category', collection: @service_categories %>
 </div>

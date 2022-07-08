@@ -17,8 +17,10 @@
                   class: 'btn btn-danger' %>
   </div>
 
-  <h2 class="mt-5"><%= link_to 'Услуги', new_service_category_service_path(@service_category, service),
-                               class: 'nav-link link-success' %></h2>
+  <h2 class="mt-5 mb-3">Услуги</h2>
+  <div>
+    <%= link_to 'Добавить услугу', new_service_category_service_path(@service_category), class: 'btn btn-success' %>
+  </div>
 
   <% @services.each do |service| %>
     <%= render 'services/service', service: service %>

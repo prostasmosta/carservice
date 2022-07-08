@@ -1,12 +1,10 @@
 <div class="col">
   <div class="card border-success border-2 mb-3 mt-5" style="max-width: 18rem;">
-    <div class="card-header"><%= link_to service.title, service_category_service_path(service),
+    <div class="card-header"><%= link_to service.title,
+                                         service_category_service_path(@service_category, service),
                                          class: 'nav-link link-success text-center' %></div>
     <div class="card-body">
       <p class="card-text"><%= service.title %></p>
     </div>
-<!--    <div>-->
-      <%#= link_to 'Добавить услугу', new_service_category_service_path, class: 'btn btn-success' %>
-<!--    </div>-->
   </div>
 </div>
