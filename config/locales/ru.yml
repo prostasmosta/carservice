@@ -1,0 +1,59 @@
+ru:
+  activerecord:
+    models:
+      user: 'Пользователь'
+      event: 'Событие'
+      subscription: 'Подписка'
+      comment: 'Комментарий'
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_email:
+              existing_email: ' уже зарегистрирован. Войдите, чтобы подписаться.'
+              same_user: ' Извините, Вы не можете подписаться на свое событие.'
+    attributes:
+      service:
+        title: 'Название'
+      service_category:
+        title: 'Название'
+
+  controllers:
+    events:
+      created: 'Вы создали новое мероприятие'
+      updated: 'Вы обновили мероприятие'
+      destroyed: 'Вы удалили мероприятие :('
+      wrong_pincode: 'Неверный пин-код!'
+
+  app:
+    name: 'ББкью'
+    profile: 'Профиль'
+    registration: 'Зарегистрироваться'
+    log_out: 'Выйти'
+    enter: 'Войти'
+
+  error:
+    one: 'В вашей форме %{count} ошибка'
+    few: 'В вашей форме %{count} ошибки'
+    many: 'В вашей форме %{count} ошибок'
+
+  events:
+    confirm_event: 'Вы точно хотите удалить событие?'
+    no_photos: 'Пока никто не выложил фотографии :('
+    no_subscribers: 'На событие еще никто не подписался'
+    back: 'вернуться'
+    save: 'Сохранить'
+    confirm: 'Подтвердить'
+    edit_cat: 'Редактирование категории'
+    all_events: 'Все события'
+    new_event: 'Новое событие'
+    edit: 'Изменить'
+    delete_event: 'Удалить событие'
+    gallery: 'Галерея'
+    calling: 'Зовет:'
+    going: 'Пойдут:'
+    i_go: 'Я пойду:'
+    pincode_access: 'Доступ к данному событию только по пин-коду'
+    to_index: 'на главную'
+    pincode: 'Пин-код доступа'
+    or: 'или'
