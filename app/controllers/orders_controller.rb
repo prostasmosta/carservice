@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.save
+    if @order.update
       redirect_to order_path, notice: 'Заказ обновлен!'
     else
       flash.now[:alert] = 'При попытке обновить заказ возникли ошибки'

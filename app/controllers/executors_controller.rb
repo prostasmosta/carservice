@@ -9,19 +9,19 @@ class ExecutorsController < ApplicationController
     @executor = Executor.new(executor_params)
 
     if @executor.save
-      redirect_to @executor, notice: 'Новый заказ создан!'
+      redirect_to @executor, notice: 'Новый исполнитель добавлен!'
     else
-      flash.now[:alert] = 'При попытке создать заказ возникли ошибки'
+      flash.now[:alert] = 'При попытке добавить исполнителя возникли ошибки'
 
       render :new
     end
   end
 
   def update
-    if @executor.save
-      redirect_to @executor, notice: 'Заказ обновлен!'
+    if @executor.update(executor_params)
+      redirect_to @executor, notice: 'Данные исполнителя обновлены!'
     else
-      flash.now[:alert] = 'При попытке обновить заказ возникли ошибки'
+      flash.now[:alert] = 'При попытке обновить данные исполнителя возникли ошибки'
 
       render :edit
     end
@@ -36,10 +36,9 @@ class ExecutorsController < ApplicationController
   end
 
   def destroy
-    @user = @question.user
-    @question.destroy
+    @executor.destroy
 
-    redirect_to user_path(@user), notice: 'Вопрос удален!'
+    redirect_to executors_path, notice: 'Исполнитель удален!'
   end
 
   private

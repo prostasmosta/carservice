@@ -1,18 +1,16 @@
 class ServicesController < ApplicationController
-  before_action :set_cat, except: %i[]
-  before_action :set_service, only: %i[new show update edit destroy]
+  before_action :set_cat
+  before_action :set_service, only: %i[show update edit destroy]
 
   def new
-    # @service = @service_category.services.build
-    @service = Service.new
-    @service.service_category_id = params[:service_category_id]
+    @service = @service_category.services.build
   end
 
   def create
     @service = @service_category.services.build(service_params)
 
     if @service.save
-      redirect_to @service_category, notice: 'Новая услуга добавлена!'
+      redirect_to service_category_path(@service_category), notice: 'Новая услуга добавлена!'
     else
       flash.now[:alert] = 'При попытке добавить услугу возникли ошибки'
 
@@ -37,7 +35,6 @@ class ServicesController < ApplicationController
   end
 
   def index
-    # @service_category = ServiceCategory.find(params[:service_category_id])
     @services = @service_category.services.order(created_at: :desc)
   end
 
@@ -50,11 +47,11 @@ class ServicesController < ApplicationController
   private
 
   def set_cat
-    @service_category = ServiceCategory.find(params[:id])
+    @service_category = ServiceCategory.find(params[:service_category_id])
   end
 
   def set_service
-    @service = @service_category.services.find(params[:service_category_id])
+    @service = @service_category.services.find(params[:id])
   end
 
   def service_params
