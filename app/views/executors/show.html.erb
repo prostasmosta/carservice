@@ -1,13 +1,13 @@
 <%= render 'executor', executor: @executor %>
 <div class="mt-4">
-  <%= link_to 'Редактировать', edit_executor_path(@executor),
+  <%= link_to t('views.edit'), edit_executor_path(@executor),
               class: 'btn btn-success' %>
-  <%= t('events.or') %>
-  <%= link_to 'вернуться', :back %>
+  <%= t('views.or') %>
+  <%= link_to t('views.back'), :back %>
 </div>
 <div class="mt-4">
-  <%= button_to 'Удалить', executor_path(@executor),
+  <%= button_to t('views.destroy'), executor_path(@executor),
                 method: :delete,
-                form: { data: { turbo_confirm: 'Уверены что хотите удалить?' } },
+                form: { data: { turbo_confirm: t('views.delete_confirm') } },
                 class: 'btn btn-danger' %>
 </div>

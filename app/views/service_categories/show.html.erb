@@ -4,16 +4,16 @@
   <h1><%= @service_category.title %></h1>
 
   <div class="mt-4">
-    <%= link_to 'Редактировать', edit_service_category_path(@service_category),
+    <%= link_to t('views.edit'), edit_service_category_path(@service_category),
                 class: 'btn btn-success' %>
-    <%= t('events.or') %>
-    <%= link_to t('events.back'), :back %>
+    <%= t('views.or') %>
+    <%= link_to t('views.back'), :back %>
   </div>
 
   <div class="mt-4">
-    <%= button_to 'Удалить', service_category_path(@service_category),
+    <%= button_to t('views.destroy'), service_category_path(@service_category),
                   method: :delete,
-                  form: { data: { turbo_confirm: 'Уверены что хотите удалить?' } },
+                  form: { data: { turbo_confirm: t('views.delete_confirm') } },
                   class: 'btn btn-danger' %>
   </div>
 
