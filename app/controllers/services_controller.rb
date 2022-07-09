@@ -10,9 +10,9 @@ class ServicesController < ApplicationController
     @service = @service_category.services.build(service_params)
 
     if @service.save
-      redirect_to service_category_path(@service_category), notice: 'Новая услуга добавлена!'
+      redirect_to service_category_path(@service_category), notice: t('controllers.services.created')
     else
-      flash.now[:alert] = 'При попытке добавить услугу возникли ошибки'
+      flash.now[:alert] = t('controllers.services.not_created')
 
       render :new
     end
@@ -20,9 +20,9 @@ class ServicesController < ApplicationController
 
   def update
     if @service.update(service_params)
-      redirect_to @service_category, notice: 'Услуга обновлена!'
+      redirect_to @service_category, notice: t('controllers.services.updated')
     else
-      flash.now[:alert] = 'При попытке обновить услугу возникли ошибки'
+      flash.now[:alert] = t('controllers.services.not_updated')
 
       render :edit
     end
@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
 
-    redirect_to @service_category, notice: 'Услуга удалена!'
+    redirect_to @service_category, notice: t('controllers.services.destroyed')
   end
 
   private

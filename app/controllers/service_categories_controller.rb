@@ -9,9 +9,9 @@ class ServiceCategoriesController < ApplicationController
     @service_category = ServiceCategory.new(cat_params)
 
     if @service_category.save
-      redirect_to @service_category, notice: 'Новая категория создана!'
+      redirect_to @service_category, notice: t('controllers.cat8s.created')
     else
-      flash.now[:alert] = 'При попытке создать категорию возникли ошибки'
+      flash.now[:alert] = t('controllers.cat8s.not_created')
 
       render :new
     end
@@ -19,9 +19,9 @@ class ServiceCategoriesController < ApplicationController
 
   def update
     if @service_category.update(cat_params)
-      redirect_to @service_category, notice: 'Категория обновлена!'
+      redirect_to @service_category, notice: t('controllers.cat8s.updated')
     else
-      flash.now[:alert] = 'При попытке обновить категорию возникли ошибки'
+      flash.now[:alert] = t('controllers.cat8s.not_updated')
 
       render :edit
     end
@@ -38,7 +38,7 @@ class ServiceCategoriesController < ApplicationController
   def destroy
     @service_category.destroy
 
-    redirect_to service_categories_path, notice: 'Категория удалена!'
+    redirect_to service_categories_path, notice: t('controllers.cat8s.destroyed')
   end
 
   private

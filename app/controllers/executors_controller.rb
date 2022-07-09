@@ -9,9 +9,9 @@ class ExecutorsController < ApplicationController
     @executor = Executor.new(executor_params)
 
     if @executor.save
-      redirect_to @executor, notice: 'Новый исполнитель добавлен!'
+      redirect_to @executor, notice: t('controllers.executors.created')
     else
-      flash.now[:alert] = 'При попытке добавить исполнителя возникли ошибки'
+      flash.now[:alert] = t('controllers.executors.not_created')
 
       render :new
     end
@@ -19,9 +19,9 @@ class ExecutorsController < ApplicationController
 
   def update
     if @executor.update(executor_params)
-      redirect_to @executor, notice: 'Данные исполнителя обновлены!'
+      redirect_to @executor, notice: t('controllers.executors.updated')
     else
-      flash.now[:alert] = 'При попытке обновить данные исполнителя возникли ошибки'
+      flash.now[:alert] = t('controllers.executors.not_updated')
 
       render :edit
     end
@@ -38,7 +38,7 @@ class ExecutorsController < ApplicationController
   def destroy
     @executor.destroy
 
-    redirect_to executors_path, notice: 'Исполнитель удален!'
+    redirect_to executors_path, notice: t('controllers.executors.destroyed')
   end
 
   private
