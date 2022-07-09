@@ -1,17 +1,10 @@
 ru:
   activerecord:
     models:
-      user: 'Пользователь'
-      event: 'Событие'
-      subscription: 'Подписка'
-      comment: 'Комментарий'
-    errors:
-      models:
-        subscription:
-          attributes:
-            user_email:
-              existing_email: ' уже зарегистрирован. Войдите, чтобы подписаться.'
-              same_user: ' Извините, Вы не можете подписаться на свое событие.'
+      order: 'Заказ'
+      executor: 'Исполнитель'
+      service_category: 'Категория услуг'
+      service: 'Услуга'
     attributes:
       service:
         title: 'Название'
@@ -21,33 +14,47 @@ ru:
         name: 'Имя'
 
   controllers:
-    events:
-      created: 'Вы создали новое мероприятие'
-      updated: 'Вы обновили мероприятие'
-      destroyed: 'Вы удалили мероприятие :('
-      wrong_pincode: 'Неверный пин-код!'
-
+    executors:
+      created: 'Новый исполнитель добавлен!'
+      not_created: 'При попытке добавить исполнителя возникли ошибки'
+      updated: 'Данные исполнителя обновлены!'
+      not_updated: 'При попытке обновить данные исполнителя возникли ошибки'
+      destroyed: 'Исполнитель удален!'
+    orders:
+      created: 'Новый заказ создан!'
+      not_created: 'При попытке создать заказ возникли ошибки'
+      updated: 'Заказ обновлен!'
+      not_updated: 'При попытке обновить заказ возникли ошибки'
+      destroyed: 'Заказ удален!'
+    cat8s:
+      created: 'Новая категория создана!'
+      not_created: 'При попытке создать категорию возникли ошибки'
+      updated: 'Категория обновлена!'
+      not_updated: 'При попытке обновить категорию возникли ошибки'
+      destroyed: 'Категория удалена!'
+    services:
+      created: 'Новая услуга добавлена!'
+      not_created: 'При попытке добавить услугу возникли ошибки'
+      updated: 'Услуга обновлена!'
+      not_updated: 'При попытке обновить услугу возникли ошибки'
+      destroyed: 'Услуга удалена!'
   app:
-    name: 'ББкью'
-    profile: 'Профиль'
-    registration: 'Зарегистрироваться'
-    log_out: 'Выйти'
-    enter: 'Войти'
+    name: 'Автосервис'
 
   error:
     one: 'В вашей форме %{count} ошибка'
     few: 'В вашей форме %{count} ошибки'
     many: 'В вашей форме %{count} ошибок'
 
-  events:
+  views:
     delete_confirm: 'Уверены что хотите удалить?'
     back: 'вернуться'
     save: 'Сохранить'
+    destroy: 'Удалить'
     confirm: 'Подтвердить'
     edit_cat: 'Редактирование категории'
     edit_executor: 'Редактирование исполнителя'
     edit_service: 'Редактирование услуги'
-    all_events: 'Все события'
-    new_event: 'Новое событие'
-    edit: 'Изменить'
+    edit_order: 'Редактирование заказа'
+    edit: 'Редактировать'
     or: 'или'
