@@ -3,8 +3,10 @@
     <div class="card-header"><%= link_to service.title,
                                          service_category_service_path(@service_category, service),
                                          class: 'nav-link link-success text-center' %></div>
-    <div class="card-body">
-      <p class="card-text"><%= service.title %></p>
-    </div>
+    <ul class="list-group list-group-flush text-center">
+      <li class="list-group-item"><%= link_to 'Заказать услугу',
+                                              new_order_path(@service),
+                                              class: 'nav-link link-danger text-center' %></li>
+    </ul>
   </div>
 </div>

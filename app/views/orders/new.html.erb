@@ -1,7 +1,19 @@
 <h1 class="mt-3">Новый заказ</h1>
 
+    <%# @service_categories.each do |service_cat| %>
+  <%#= render 'service_categories/service_category', service_category: service_cat %>
+<%# end %>
+
+<select name="post[author_id]">
+  <% @service_categories.each do |service_cat| %>
+    <% service_cat.services.each do |service| %>
+    <option value="<%= service.id %>"><%= service.title %></option>
+  <% end %>
+  <% end %>
+</select>
+
 <div class="row">
   <div class="col-md-8">
-    <%= render 'form', order: @order %>
+    <%= render 'form', order: @order, locals: { service_categories: @service_categories } %>
   </div>
 </div>

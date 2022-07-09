@@ -1,13 +1,17 @@
 <%= form_for order, data: { turbo: false } do |f| %>
   <%= render partial: 'partials/form_errors', locals: {errors: order.errors} %>
 
-  <div class="mb-3 mt-2">
-    <%= f.label :number %>
-  </div>
+<!--  <div class="mb-3 mt-2">-->
+    <%#= f.label :number %>
+    <%#= f.text_field :title, class: 'form-control' %>
+<!--  </div>-->
 
-  <div class="mb-3">
-    <%= f.label :created_at %>
-  </div>
+<!--  <div class="mb-3">-->
+    <%#= f.label :created_at %>
+    <%#= f.text_field :title, class: 'form-control' %>
+<!--  </div>-->
+  <%#= f.collection_select :service, @service_categories, ServiceCategory.all, :id, :title %>
+
 
   <div class="mt-4">
     <%= f.submit 'Сохранить', class: 'btn btn-success' %>
