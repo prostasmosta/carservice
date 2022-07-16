@@ -8,10 +8,19 @@ ru:
     attributes:
       service:
         title: 'Название'
+        price: 'Цена, руб.'
+        exec_time: 'Время исполнения, мин.'
       service_category:
         title: 'Название'
       executor:
         name: 'Имя'
+        position: 'Должность'
+      order:
+        customer_name: 'Имя заказчика'
+        services: 'Услуги'
+        service_ids: 'Поле: "Услуги"'
+        executors: 'Исполнители'
+        executor_ids: 'Поле: "Исполнители"'
 
   controllers:
     executors:
