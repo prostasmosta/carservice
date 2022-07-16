@@ -4,12 +4,16 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @service_categories = ServiceCategory.all
+    @services = Service.all
   end
 
   def create
-    @order = Order.new
+    @order = Order.new(order_params)
 
     if @order.save
+      create_service_id
+      create_executor_id
+
       redirect_to orders_path, notice: t('controllers.orders.created')
     else
       flash.now[:alert] = t('controllers.orders.not_created')
@@ -46,11 +50,19 @@ class OrdersController < ApplicationController
 
   private
 
+  def create_service_id
+    params[:order][:service_ids].each { |id| @order.order_services.create(service_id: id) }
+  end
+
+  def create_executor_id
+    params[:order][:executor_ids].each { |id| @order.order_services.create(executor_id: id) }
+  end
+
   def set_order
     @order = Order.find(params[:id])
   end
 
   def order_params
-    # params.require(:order).params(:number)
+    params.require(:order).permit(:customer_name, service_ids: [], executor_ids: [])
   end
 end

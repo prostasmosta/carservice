@@ -48,6 +48,6 @@ class ExecutorsController < ApplicationController
   end
 
   def executor_params
-    params.require(:executor).permit(:name)
+    params.require(:executor).permit(:name, :position)
   end
 end
