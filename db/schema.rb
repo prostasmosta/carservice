@@ -10,17 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_112911) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_134335) do
   create_table "executors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position"
+  end
+
+  create_table "order_services", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "executor_id"
+    t.index ["executor_id"], name: "index_order_services_on_executor_id"
+    t.index ["order_id"], name: "index_order_services_on_order_id"
+    t.index ["service_id"], name: "index_order_services_on_service_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "number"
+    t.string "customer_name"
   end
 
   create_table "service_categories", force: :cascade do |t|
@@ -34,8 +47,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_112911) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "service_category_id"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "exec_time"
     t.index ["service_category_id"], name: "index_services_on_service_category_id"
   end
 
+  add_foreign_key "order_services", "executors"
+  add_foreign_key "order_services", "orders"
+  add_foreign_key "order_services", "services"
   add_foreign_key "services", "service_categories"
 end
