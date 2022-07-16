@@ -6,6 +6,11 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
+  <div class="mb-3 mt-2">
+    <%= f.label :position %>
+    <%= f.text_field :position, class: 'form-control' %>
+  </div>
+
   <div class="mt-4">
     <%= f.submit t('views.save'), class: 'btn btn-success' %>
     <%= t('views.or') %>

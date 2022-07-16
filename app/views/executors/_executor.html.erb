@@ -2,8 +2,8 @@
   <div class="card border-success border-2 mb-3 mt-5" style="max-width: 18rem;">
     <div class="card-header"><%= link_to executor.name, executor_path(executor),
                                          class: 'nav-link link-success text-center text-uppercase' %></div>
-    <div class="card-body">
-<!--      <p class="card-text"><%#= executor.service %></p>-->
-    </div>
+    <ul class="list-group list-group-flush text-center">
+      <li class="list-group-item"><%= executor.position %></li>
+    </ul>
   </div>
 </div>

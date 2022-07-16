@@ -4,9 +4,8 @@
                                          service_category_service_path(@service_category, service),
                                          class: 'nav-link link-success text-center' %></div>
     <ul class="list-group list-group-flush text-center">
-      <li class="list-group-item"><%= link_to 'Заказать услугу',
-                                              new_order_path(@service),
-                                              class: 'nav-link link-danger text-center' %></li>
+      <li class="list-group-item">Цена: <%= number_to_currency(service.price, :unit => "Р") %></li>
+      <li class="list-group-item">Время: <%= service.exec_time %> мин.</li>
     </ul>
   </div>
 </div>
