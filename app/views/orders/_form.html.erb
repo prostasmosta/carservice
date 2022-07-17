@@ -1,23 +1,18 @@
 <%= simple_form_for order, data: { turbo: false } do |f| %>
   <%= render partial: 'partials/form_errors', locals: {errors: order.errors} %>
 
-  <div class="mb-3 mt-2">
+  <div class="mb-4 mt-2">
     <%= f.label :customer_name %>
     <%= f.text_field :customer_name, class: 'form-control' %>
   </div>
 
-  <div class="mb-3 mt-2">
-    <%= f.association :services, as: :check_boxes %>
+  <div class="mb-4">
+    <%= f.association :services, as: :check_boxes, wrapper: :horizontal_collection %>
   </div>
 
-  <div class="mb-3 mt-2">
-    <%= f.association :executors, as: :check_boxes %>
+  <div class="">
+    <%= f.association :executors, as: :check_boxes, wrapper: :horizontal_collection %>
   </div>
-
-<!--  <div class="field">-->
-<!--    <%#= f.label :services %><br>-->
-    <%#= f.collection_select :service_ids, @services, :id, :title, {}, multiple: true %>
-<!--  </div>-->
 
   <div class="mt-4">
     <%= f.submit t('views.save'), class: 'btn btn-success' %>

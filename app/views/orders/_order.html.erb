@@ -2,9 +2,24 @@
   <div class="card border-success border-2 mb-3 mt-5" style="max-width: 18rem;">
     <div class="card-header"><%= link_to order.number, order_path(order),
                                          class: 'nav-link link-success text-center text-uppercase' %></div>
-    <div class="card-body">
-      <p class="card-text"><%= l order.created_at, format: :short %></p>
-<!--      <p class="card-text"><%#= order.service.title %></p>-->
-    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= l order.created_at, format: :short %></li>
+      <li class="list-group-item"><%= order.customer_name %></li>
+
+      <% order.services.uniq.each do |s| %>
+        <li class="list-group-item">
+          <%= s.title %>
+        </li>
+      <% end %>
+
+      <% order.executors.uniq.each do |e| %>
+        <li class="list-group-item">
+          <%= e.name %>
+        </li>
+      <% end %>
+
+      <li class="list-group-item"><%= order.price %>руб.</li>
+      <li class="list-group-item"><%= order.exec_time %>мин.</li>
+    </ul>
   </div>
 </div>
