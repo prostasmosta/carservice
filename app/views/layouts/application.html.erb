@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CarService</title>
+    <title><%= t('views.app') %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,13 +14,13 @@
 <body class="mb-5">
 <div class="navbar navbar-expand navbar-light bg-light">
   <div class="container justify-content-start">
-    <%= link_to 'CarService', root_path, class: 'navbar-brand' %>
+    <%= link_to t('views.app'), root_path, class: 'navbar-brand' %>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav nav-tabs">
-          <li class="nav-item"><%= link_to 'Исполнители', executors_path,
+          <li class="nav-item"><%= link_to t('views.execs'), executors_path,
                                            class: 'nav-link link-dark' %></li>
-          <li class="nav-item"><%= link_to 'Категории услуг', service_categories_path,
+          <li class="nav-item"><%= link_to t('views.services_cats'), service_categories_path,
                                            class: 'nav-link link-dark' %></li>
       </ul>
     </div>
@@ -39,7 +39,7 @@
 <footer class="fixed-bottom bg-light text-center text-lg-start">
   <div class="text-center p-3">
     &copy; 2022
-    <a class="text-dark" href="https://github.com/prostasmosta/BBQ"><%= t 'app.name' %></a>
+    <a class="text-dark" href="https://carservice-app.herokuapp.com/"><%= t 'app.name' %></a>
   </div>
 </footer>
 </body>

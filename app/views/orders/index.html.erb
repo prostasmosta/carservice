@@ -1,8 +1,9 @@
-<h1 class="my-3">Все заказы</h1>
+<h1 class="my-3"><%= t('views.all_orders') %></h1>
 
 <div>
-  <%= link_to 'Создать заказ', new_order_path, class: 'btn btn-success mb-3' %>
+  <%= link_to t('views.create_order'), new_order_path, class: 'btn btn-success mb-3' %>
 </div>
+
 <div class="row">
   <div class="col-md-8">
     <%= search_form_for @q do |f| %>
@@ -27,16 +28,15 @@
     <% end %>
   </div>
 
-
   <div class="col-md-4 px-3 text-end">
-    <h4 class="mt-4">Сортировать по:</h4>
+    <h4 class="mt-4"><%= t('views.sort') %></h4>
 
     <nav><%= sort_link(@q, :customer_name) %></nav>
     <nav><%= sort_link(@q, :created_at) %></nav>
     <nav><%= sort_link(@q, :price) %></nav>
     <nav><%= sort_link(@q, :exec_time) %></nav>
-    <nav><%= sort_link(@q, :services_title, 'Название услуги') %></nav>
-    <nav><%= sort_link(@q, :executors_name, 'Имя исполнителя') %></nav>
+    <nav><%= sort_link(@q, :services_title, t('views.s_title')) %></nav>
+    <nav><%= sort_link(@q, :executors_name, t('views.e_name')) %></nav>
   </div>
 </div>
 
@@ -49,5 +49,5 @@
 </div>
 
 <div class="my-4 text-end">
-  <%= link_to 'Download as .xlsx', orders_path(request.parameters.merge(format: :xlsx)) %>
+  <%= link_to t('views.dwnload'), orders_path(request.parameters.merge(format: :xlsx)) %>
 </div>
