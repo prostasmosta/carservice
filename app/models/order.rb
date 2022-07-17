@@ -8,10 +8,20 @@ class Order < ApplicationRecord
   validates :executor_ids, presence: true
 
   after_create :set_order_number
+  after_create :set_price
+  after_create :set_exec_time
 
   private 
 
   def set_order_number
     update_columns(number: "№#{SecureRandom.random_number(10000)}")
+  end
+
+  def set_price
+    update_columns(price: self.services.uniq.map { |s| s.price }.sum)
+  end
+
+  def set_exec_time
+    update_columns(exec_time: self.services.uniq.map { |s| s.exec_time }.sum)
   end
 end
