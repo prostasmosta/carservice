@@ -15,9 +15,13 @@ gem 'redis', '~> 4.0'
 gem 'rails-i18n'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
-gem 'dry-transaction'
 gem 'simple_form'
 gem 'ransack'
+gem 'will_paginate-bootstrap-style'
+gem 'will_paginate'
+gem 'caxlsx'
+gem 'caxlsx_rails'
+gem 'acts_as_xlsx'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]

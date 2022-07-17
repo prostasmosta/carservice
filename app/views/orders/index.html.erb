@@ -1,9 +1,50 @@
 <h1 class="my-3">Все заказы</h1>
 
 <div>
-  <%= link_to 'Создать заказ', new_order_path, class: 'btn btn-success' %>
+  <%= link_to 'Создать заказ', new_order_path, class: 'btn btn-success mb-3' %>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= search_form_for @q do |f| %>
+      <div class="mb-3 mt-2">
+        <%= f.label :customer_name_cont %>
+        <%= f.search_field :customer_name_cont, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :service_start %>
+        <%= f.search_field :services_title_start, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :executor_start %>
+        <%= f.search_field :executors_name_start, class: 'form-control' %>
+      </div>
+
+      <div class="mt-3">
+        <button type="submit" class="btn btn-success"><%= t('views.search') %></button>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="col-md-4 justify-content-end">
+    <h4 class="my-3">Сортировать по:</h4>
+
+    <%= sort_link(@q, :customer_name) %>
+    <%= sort_link(@q, :created_at) %>
+    <%= sort_link(@q, :price) %>
+    <%= sort_link(@q, :exec_time) %>
+    <%= sort_link(@q, :services_title, 'Название услуги') %>
+    <%= sort_link(@q, :executors_name, 'Имя исполнителя') %>
+  </div>
 </div>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
   <%= render partial: 'orders/order', collection: @orders %>
 </div>
+
+<ul class="my-4">
+  <%= will_paginate @orders %>
+</ul>
