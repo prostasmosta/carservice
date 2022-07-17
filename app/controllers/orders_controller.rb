@@ -37,15 +37,19 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.order(created_at: :desc)
-    @executors = Executor.order(created_at: :desc)
+    @q = Order.ransack(params[:q])
+    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 8)
+
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def destroy
-    @user = @question.user
-    @question.destroy
+    @order.destroy
 
-    redirect_to user_path(@user), notice: t('controllers.orders.destroyed')
+    redirect_to orders_path, notice: t('controllers.orders.destroyed')
   end
 
   private

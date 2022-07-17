@@ -3,7 +3,6 @@
 <div>
   <%= link_to 'Создать заказ', new_order_path, class: 'btn btn-success mb-3' %>
 </div>
-
 <div class="row">
   <div class="col-md-8">
     <%= search_form_for @q do |f| %>
@@ -29,15 +28,15 @@
   </div>
 
 
-  <div class="col-md-4 justify-content-end">
-    <h4 class="my-3">Сортировать по:</h4>
+  <div class="col-md-4 px-3 text-end">
+    <h4 class="mt-4">Сортировать по:</h4>
 
-    <%= sort_link(@q, :customer_name) %>
-    <%= sort_link(@q, :created_at) %>
-    <%= sort_link(@q, :price) %>
-    <%= sort_link(@q, :exec_time) %>
-    <%= sort_link(@q, :services_title, 'Название услуги') %>
-    <%= sort_link(@q, :executors_name, 'Имя исполнителя') %>
+    <nav><%= sort_link(@q, :customer_name) %></nav>
+    <nav><%= sort_link(@q, :created_at) %></nav>
+    <nav><%= sort_link(@q, :price) %></nav>
+    <nav><%= sort_link(@q, :exec_time) %></nav>
+    <nav><%= sort_link(@q, :services_title, 'Название услуги') %></nav>
+    <nav><%= sort_link(@q, :executors_name, 'Имя исполнителя') %></nav>
   </div>
 </div>
 
@@ -45,6 +44,10 @@
   <%= render partial: 'orders/order', collection: @orders %>
 </div>
 
-<ul class="my-4">
+<div class="my-4">
   <%= will_paginate @orders %>
-</ul>
+</div>
+
+<div class="my-4 text-end">
+  <%= link_to 'Download as .xlsx', orders_path(request.parameters.merge(format: :xlsx)) %>
+</div>

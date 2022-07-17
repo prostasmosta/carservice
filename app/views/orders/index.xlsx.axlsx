@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Orders") do |sheet|
+  sheet.add_row [
+                  t('views.number'),
+                  t('views.created_at'),
+                  t('views.customer_name'),
+                  t('views.s_title'),
+                  t('views.e_name'),
+                  t('views.price'),
+                  t('views.exec_time'),
+                ]
+  @orders.each do |order|
+    sheet.add_row [
+                    order.number,
+                    order.created_at,
+                    order.customer_name,
+                    order.services.uniq.map(&:title).join(', '),
+                    order.executors.uniq.map(&:name).join(', '),
+                    order.price,
+                    order.exec_time,
+                  ]
+  end
+end
