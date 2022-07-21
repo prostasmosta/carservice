@@ -11,13 +11,11 @@ class Order < ApplicationRecord
   after_create :set_price
   after_create :set_exec_time
 
-  scope :sort_by_service_title_asc, -> { joins(:services).order(title: :asc) }
-  scope :sort_by_service_title_desc, -> { joins(:services).order(title: :desc) }
+  scope :find_by_customer_name, ->(customer_name) { where(:customer_name => customer_name) }
+  scope :find_by_service_title, ->(title) { joins(:services).where(services: {:title => title}) }
+  scope :find_by_executor_name, ->(name) { joins(:executors).where(executors: {:name => name}) }
 
-  scope :sort_by_executor_name_asc, -> { joins(:executors).order(name: :asc) }
-  scope :sort_by_executor_name_desc, -> { joins(:executors).order(name: :desc) }
-
-  private 
+  private
 
   def set_order_number
     update_columns(number: "№#{SecureRandom.random_number(10000)}")

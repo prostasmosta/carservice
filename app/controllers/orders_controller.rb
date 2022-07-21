@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show update edit destroy]
+  helper_method :sort_column, :sort_direction
 
   def new
     @order = Order.new
@@ -37,8 +38,14 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @q = Order.ransack(params[:q])
-    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 8)
+    @orders = Order.joins(:services, :executors).
+      order(sort_column + " " + sort_direction).
+      group('orders.id').
+      paginate(page: params[:page], per_page: 8)
+
+    @orders = @orders.find_by_customer_name(params[:customer_name]) if params[:customer_name].present?
+    @orders = @orders.find_by_service_title(params[:title]) if params[:title].present?
+    @orders = @orders.find_by_executor_name(params[:name]) if params[:name].present?
 
     respond_to do |format|
       format.html
@@ -54,6 +61,16 @@ class OrdersController < ApplicationController
 
   private
 
+  def sort_column
+    Order.column_names.include?(params[:sort]) ? params[:sort] : "customer_name"
+    Service.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    Executor.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
   def create_service_id
     params[:order][:service_ids].each { |id| @order.order_services.create(service_id: id) }
   end
@@ -67,6 +84,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:customer_name, service_ids: [], executor_ids: [])
+    params.require(:order).permit(:customer_name, service_ids: [], executor_ids: [],
+                                  service: [:title])
   end
 end
