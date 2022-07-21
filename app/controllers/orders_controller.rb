@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
       joins(:services, :executors).
       group(['orders.id, executors.name, services.title']).
       order(sort_column + " " + sort_direction).
+      distinct.
       paginate(page: params[:page], per_page: 8)
 
     @orders = @orders.find_by_customer_name(params[:customer_name]) if params[:customer_name].present?
