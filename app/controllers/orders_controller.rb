@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.
       joins(:services, :executors).
+      group('orders.id').
       order(sort_column + " " + sort_direction).
       paginate(page: params[:page], per_page: 8)
 
