@@ -93,5 +93,6 @@ ru:
     execs: 'Исполнители'
     services_cats: 'Категории услуг'
     sort: 'Сортировать по:'
+    searching: 'Искать по:'
     dwnload: 'Download as .xlsx'
     app: 'CarService'
