@@ -16,7 +16,7 @@ gem 'rails-i18n'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
 gem 'simple_form'
-gem 'ransack'
+# gem 'ransack'
 gem 'will_paginate-bootstrap-style'
 gem 'will_paginate'
 gem 'caxlsx'
