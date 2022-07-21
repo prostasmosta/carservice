@@ -40,7 +40,6 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.
       joins(:services, :executors).
-      group('orders.id').
       order(sort_column + " " + sort_direction).
       paginate(page: params[:page], per_page: 8)
 
@@ -72,11 +71,11 @@ class OrdersController < ApplicationController
   end
 
   def create_service_id
-    params[:order][:service_ids].each { |id| @order.order_services.create(service_id: id) }
+    @order.order_services.create(service_id: params[:order][:service_ids].uniq)
   end
 
   def create_executor_id
-    params[:order][:executor_ids].each { |id| @order.order_services.create(executor_id: id) }
+    @order.order_services.create(executor_id: params[:order][:executor_ids].uniq)
   end
 
   def set_order
