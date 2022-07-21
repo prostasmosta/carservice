@@ -62,9 +62,8 @@ class OrdersController < ApplicationController
   private
 
   def sort_column
-    Order.column_names.include?(params[:sort]) ? params[:sort] : "customer_name"
-    Service.column_names.include?(params[:sort]) ? params[:sort] : "title"
-    Executor.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    col_names = Order.column_names + Service.column_names + Executor.column_names
+    col_names.include?(params[:sort]) ? params[:sort] : "customer_name"
   end
 
   def sort_direction
@@ -84,7 +83,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:customer_name, service_ids: [], executor_ids: [],
-                                  service: [:title])
+    params.require(:order).permit(:customer_name, service_ids: [], executor_ids: [])
   end
 end
